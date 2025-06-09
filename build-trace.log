@@ -1,0 +1,98 @@
+execve("/usr/bin/npm", ["npm", "run", "build"], 0x7fff3a789228 /* 30 vars */) = 0
+execve("/home/mumbi/.rbenv/plugins/ruby-build/bin/node", ["node", "/usr/bin/npm", "run", "build"], 0x7fff4efff408 /* 30 vars */) = -1 ENOENT (No such file or directory)
+execve("/home/mumbi/.rbenv/plugins/ruby-build/bin/node", ["node", "/usr/bin/npm", "run", "build"], 0x7fff4efff408 /* 30 vars */) = -1 ENOENT (No such file or directory)
+execve("/home/mumbi/.rbenv/shims/node", ["node", "/usr/bin/npm", "run", "build"], 0x7fff4efff408 /* 30 vars */) = -1 ENOENT (No such file or directory)
+execve("/home/mumbi/.rbenv/bin/node", ["node", "/usr/bin/npm", "run", "build"], 0x7fff4efff408 /* 30 vars */) = -1 ENOENT (No such file or directory)
+execve("/home/mumbi/.rbenv/plugins/ruby-build/bin/node", ["node", "/usr/bin/npm", "run", "build"], 0x7fff4efff408 /* 30 vars */) = -1 ENOENT (No such file or directory)
+execve("/home/mumbi/.rbenv/shims/node", ["node", "/usr/bin/npm", "run", "build"], 0x7fff4efff408 /* 30 vars */) = -1 ENOENT (No such file or directory)
+execve("/home/mumbi/.rbenv/bin/node", ["node", "/usr/bin/npm", "run", "build"], 0x7fff4efff408 /* 30 vars */) = -1 ENOENT (No such file or directory)
+execve("/home/mumbi/.rbenv/plugins/ruby-build/bin/node", ["node", "/usr/bin/npm", "run", "build"], 0x7fff4efff408 /* 30 vars */) = -1 ENOENT (No such file or directory)
+execve("/home/mumbi/.rbenv/shims/node", ["node", "/usr/bin/npm", "run", "build"], 0x7fff4efff408 /* 30 vars */) = -1 ENOENT (No such file or directory)
+execve("/home/mumbi/.rbenv/bin/node", ["node", "/usr/bin/npm", "run", "build"], 0x7fff4efff408 /* 30 vars */) = -1 ENOENT (No such file or directory)
+execve("/home/mumbi/.vscode-server/bin/17baf841131aa23349f217ca7c570c76ee87b957/bin/remote-cli/node", ["node", "/usr/bin/npm", "run", "build"], 0x7fff4efff408 /* 30 vars */) = -1 ENOENT (No such file or directory)
+execve("/home/mumbi/.rbenv/plugins/ruby-build/bin/node", ["node", "/usr/bin/npm", "run", "build"], 0x7fff4efff408 /* 30 vars */) = -1 ENOENT (No such file or directory)
+execve("/home/mumbi/.rbenv/plugins/ruby-build/bin/node", ["node", "/usr/bin/npm", "run", "build"], 0x7fff4efff408 /* 30 vars */) = -1 ENOENT (No such file or directory)
+execve("/home/mumbi/.rbenv/shims/node", ["node", "/usr/bin/npm", "run", "build"], 0x7fff4efff408 /* 30 vars */) = -1 ENOENT (No such file or directory)
+execve("/home/mumbi/.rbenv/bin/node", ["node", "/usr/bin/npm", "run", "build"], 0x7fff4efff408 /* 30 vars */) = -1 ENOENT (No such file or directory)
+execve("/home/mumbi/.rbenv/plugins/ruby-build/bin/node", ["node", "/usr/bin/npm", "run", "build"], 0x7fff4efff408 /* 30 vars */) = -1 ENOENT (No such file or directory)
+execve("/home/mumbi/.rbenv/shims/node", ["node", "/usr/bin/npm", "run", "build"], 0x7fff4efff408 /* 30 vars */) = -1 ENOENT (No such file or directory)
+execve("/home/mumbi/.rbenv/bin/node", ["node", "/usr/bin/npm", "run", "build"], 0x7fff4efff408 /* 30 vars */) = -1 ENOENT (No such file or directory)
+execve("/home/mumbi/.rbenv/plugins/ruby-build/bin/node", ["node", "/usr/bin/npm", "run", "build"], 0x7fff4efff408 /* 30 vars */) = -1 ENOENT (No such file or directory)
+execve("/home/mumbi/.rbenv/shims/node", ["node", "/usr/bin/npm", "run", "build"], 0x7fff4efff408 /* 30 vars */) = -1 ENOENT (No such file or directory)
+execve("/home/mumbi/.rbenv/bin/node", ["node", "/usr/bin/npm", "run", "build"], 0x7fff4efff408 /* 30 vars */) = -1 ENOENT (No such file or directory)
+execve("/usr/local/sbin/node", ["node", "/usr/bin/npm", "run", "build"], 0x7fff4efff408 /* 30 vars */) = -1 ENOENT (No such file or directory)
+execve("/usr/local/bin/node", ["node", "/usr/bin/npm", "run", "build"], 0x7fff4efff408 /* 30 vars */) = -1 ENOENT (No such file or directory)
+execve("/usr/sbin/node", ["node", "/usr/bin/npm", "run", "build"], 0x7fff4efff408 /* 30 vars */) = -1 ENOENT (No such file or directory)
+execve("/usr/bin/node", ["node", "/usr/bin/npm", "run", "build"], 0x7fff4efff408 /* 30 vars */) = 0
+strace: Process 2961 attached
+strace: Process 2962 attached
+strace: Process 2963 attached
+strace: Process 2964 attached
+strace: Process 2965 attached
+strace: Process 2967 attached
+strace: Process 2981 attached
+strace: Process 2982 attached
+strace: Process 2983 attached
+strace: Process 2984 attached
+
+> it-device-manager@0.0.0 build
+> vite build
+
+strace: Process 2998 attached
+[pid  2998] execve("/mnt/c/Projects/Dakawou-ICT-Checklist/Stocknest/node_modules/.bin/sh", ["sh", "-c", "vite build"], 0x76d8490 /* 53 vars */) = -1 ENOENT (No such file or directory)
+[pid  2998] execve("/mnt/c/Projects/Dakawou-ICT-Checklist/node_modules/.bin/sh", ["sh", "-c", "vite build"], 0x76d8490 /* 53 vars */) = -1 ENOENT (No such file or directory)
+[pid  2998] execve("/mnt/c/Projects/node_modules/.bin/sh", ["sh", "-c", "vite build"], 0x76d8490 /* 53 vars */) = -1 ENOENT (No such file or directory)
+[pid  2998] execve("/mnt/c/node_modules/.bin/sh", ["sh", "-c", "vite build"], 0x76d8490 /* 53 vars */) = -1 ENOENT (No such file or directory)
+[pid  2998] execve("/mnt/node_modules/.bin/sh", ["sh", "-c", "vite build"], 0x76d8490 /* 53 vars */) = -1 ENOENT (No such file or directory)
+[pid  2998] execve("/node_modules/.bin/sh", ["sh", "-c", "vite build"], 0x76d8490 /* 53 vars */) = -1 ENOENT (No such file or directory)
+[pid  2998] execve("/usr/lib/node_modules/npm/node_modules/@npmcli/run-script/lib/node-gyp-bin/sh", ["sh", "-c", "vite build"], 0x76d8490 /* 53 vars */) = -1 ENOENT (No such file or directory)
+[pid  2998] execve("/home/mumbi/.rbenv/plugins/ruby-build/bin/sh", ["sh", "-c", "vite build"], 0x76d8490 /* 53 vars */) = -1 ENOENT (No such file or directory)
+[pid  2998] execve("/home/mumbi/.rbenv/plugins/ruby-build/bin/sh", ["sh", "-c", "vite build"], 0x76d8490 /* 53 vars */) = -1 ENOENT (No such file or directory)
+[pid  2998] execve("/home/mumbi/.rbenv/shims/sh", ["sh", "-c", "vite build"], 0x76d8490 /* 53 vars */) = -1 ENOENT (No such file or directory)
+[pid  2998] execve("/home/mumbi/.rbenv/bin/sh", ["sh", "-c", "vite build"], 0x76d8490 /* 53 vars */) = -1 ENOENT (No such file or directory)
+[pid  2998] execve("/home/mumbi/.rbenv/plugins/ruby-build/bin/sh", ["sh", "-c", "vite build"], 0x76d8490 /* 53 vars */) = -1 ENOENT (No such file or directory)
+[pid  2998] execve("/home/mumbi/.rbenv/shims/sh", ["sh", "-c", "vite build"], 0x76d8490 /* 53 vars */) = -1 ENOENT (No such file or directory)
+[pid  2998] execve("/home/mumbi/.rbenv/bin/sh", ["sh", "-c", "vite build"], 0x76d8490 /* 53 vars */) = -1 ENOENT (No such file or directory)
+[pid  2998] execve("/home/mumbi/.rbenv/plugins/ruby-build/bin/sh", ["sh", "-c", "vite build"], 0x76d8490 /* 53 vars */) = -1 ENOENT (No such file or directory)
+[pid  2998] execve("/home/mumbi/.rbenv/shims/sh", ["sh", "-c", "vite build"], 0x76d8490 /* 53 vars */) = -1 ENOENT (No such file or directory)
+[pid  2998] execve("/home/mumbi/.rbenv/bin/sh", ["sh", "-c", "vite build"], 0x76d8490 /* 53 vars */) = -1 ENOENT (No such file or directory)
+[pid  2998] execve("/home/mumbi/.vscode-server/bin/17baf841131aa23349f217ca7c570c76ee87b957/bin/remote-cli/sh", ["sh", "-c", "vite build"], 0x76d8490 /* 53 vars */) = -1 ENOENT (No such file or directory)
+[pid  2998] execve("/home/mumbi/.rbenv/plugins/ruby-build/bin/sh", ["sh", "-c", "vite build"], 0x76d8490 /* 53 vars */) = -1 ENOENT (No such file or directory)
+[pid  2998] execve("/home/mumbi/.rbenv/plugins/ruby-build/bin/sh", ["sh", "-c", "vite build"], 0x76d8490 /* 53 vars */) = -1 ENOENT (No such file or directory)
+[pid  2998] execve("/home/mumbi/.rbenv/shims/sh", ["sh", "-c", "vite build"], 0x76d8490 /* 53 vars */) = -1 ENOENT (No such file or directory)
+[pid  2998] execve("/home/mumbi/.rbenv/bin/sh", ["sh", "-c", "vite build"], 0x76d8490 /* 53 vars */) = -1 ENOENT (No such file or directory)
+[pid  2998] execve("/home/mumbi/.rbenv/plugins/ruby-build/bin/sh", ["sh", "-c", "vite build"], 0x76d8490 /* 53 vars */) = -1 ENOENT (No such file or directory)
+[pid  2998] execve("/home/mumbi/.rbenv/shims/sh", ["sh", "-c", "vite build"], 0x76d8490 /* 53 vars */) = -1 ENOENT (No such file or directory)
+[pid  2998] execve("/home/mumbi/.rbenv/bin/sh", ["sh", "-c", "vite build"], 0x76d8490 /* 53 vars */) = -1 ENOENT (No such file or directory)
+[pid  2998] execve("/home/mumbi/.rbenv/plugins/ruby-build/bin/sh", ["sh", "-c", "vite build"], 0x76d8490 /* 53 vars */) = -1 ENOENT (No such file or directory)
+[pid  2998] execve("/home/mumbi/.rbenv/shims/sh", ["sh", "-c", "vite build"], 0x76d8490 /* 53 vars */) = -1 ENOENT (No such file or directory)
+[pid  2998] execve("/home/mumbi/.rbenv/bin/sh", ["sh", "-c", "vite build"], 0x76d8490 /* 53 vars */) = -1 ENOENT (No such file or directory)
+[pid  2998] execve("/usr/local/sbin/sh", ["sh", "-c", "vite build"], 0x76d8490 /* 53 vars */) = -1 ENOENT (No such file or directory)
+[pid  2998] execve("/usr/local/bin/sh", ["sh", "-c", "vite build"], 0x76d8490 /* 53 vars */) = -1 ENOENT (No such file or directory)
+[pid  2998] execve("/usr/sbin/sh", ["sh", "-c", "vite build"], 0x76d8490 /* 53 vars */) = -1 ENOENT (No such file or directory)
+[pid  2998] execve("/usr/bin/sh", ["sh", "-c", "vite build"], 0x76d8490 /* 53 vars */) = 0
+strace: Process 3004 attached
+[pid  3004] execve("/usr/bin/vite", ["vite", "build"], 0x55c8725c5ea8 /* 53 vars */) = 0
+qt.qpa.xcb: could not connect to display 
+qt.qpa.plugin: Could not load the Qt platform plugin "xcb" in "" even though it was found.
+This application failed to start because no Qt platform plugin could be initialized. Reinstalling the application may fix this problem.
+
+Available platform plugins are: eglfs, linuxfb, minimal, minimalegl, offscreen, vnc, wayland-egl, wayland, wayland-xcomposite-egl, wayland-xcomposite-glx, xcb.
+
+[pid  3004] --- SIGABRT {si_signo=SIGABRT, si_code=SI_TKILL, si_pid=3004, si_uid=1000} ---
+[pid  3004] +++ killed by SIGABRT +++
+[pid  2998] --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_KILLED, si_pid=3004, si_uid=1000, si_status=SIGABRT, si_utime=9 /* 0.09 s */, si_stime=22 /* 0.22 s */} ---
+Aborted
+[pid  2998] +++ exited with 134 +++
+[pid  2960] --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=2998, si_uid=1000, si_status=134, si_utime=0, si_stime=1 /* 0.01 s */} ---
+[pid  2983] +++ exited with 0 +++
+[pid  2984] +++ exited with 0 +++
+[pid  2982] +++ exited with 0 +++
+[pid  2981] +++ exited with 0 +++
+[pid  2962] +++ exited with 0 +++
+[pid  2965] +++ exited with 0 +++
+[pid  2963] +++ exited with 0 +++
+[pid  2964] +++ exited with 0 +++
+[pid  2961] +++ exited with 0 +++
+[pid  2967] +++ exited with 134 +++
++++ exited with 134 +++
