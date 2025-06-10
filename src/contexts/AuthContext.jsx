@@ -11,7 +11,14 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const { toast } = useToast();
 
-  
+  useEffect(() => {
+    // Check if user is logged in from localStorage
+    const user = localStorage.getItem('currentUser');
+    if (user) {
+      setCurrentUser(JSON.parse(user));
+    }
+    setLoading(false);
+  }, []);
 
   const register = (email, password, name) => {
    
