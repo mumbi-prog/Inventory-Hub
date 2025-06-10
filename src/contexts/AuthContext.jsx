@@ -28,7 +28,14 @@ export const AuthProvider = ({ children }) => {
     users.push(newUser);
     localStorage.setItem('users', JSON.stringify(users));
     
-   
+    // Log in user after registratin
+    setCurrentUser(newUser);
+    localStorage.setItem('currentUser', JSON.stringify(newUser));
+    
+    toast({
+      title: "Registration successful",
+      description: "Your account has been created",
+    });
     
     return true;
   };
