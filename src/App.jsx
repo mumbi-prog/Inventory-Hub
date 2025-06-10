@@ -24,7 +24,21 @@ const ProtectedRoute = ({ children }) => {
 const App = () => {
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }} className="min-h-screen">
-      
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/" element={
+          <ProtectedRoute>
+            <Layout />
+          </ProtectedRoute>
+        }>
+          <Route index element={<Dashboard />} />
+          <Route path="devices" element={<DeviceList />} />
+          <Route path="devices/new" element={<DeviceForm />} />
+          <Route path="devices/edit/:id" element={<DeviceForm />} />
+        </Route>
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
     </motion.div>
   );
 };
