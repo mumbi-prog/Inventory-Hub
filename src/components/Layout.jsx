@@ -53,7 +53,8 @@ function Layout() {
             </Button>
           </div>
           
-          <button className="md:hidden p-2 rounded-md hover:bg-gray-100"
+          <button 
+            className="md:hidden p-2 rounded-md hover:bg-gray-100"
             onClick={toggleMobileMenu}
           >
             {isMobileMenuOpen ? (
@@ -65,7 +66,88 @@ function Layout() {
         </div>
       </header>
 
-      
+       {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          className="md:hidden bg-white shadow-lg z-20"
+        >
+          <div className="px-4 py-2 space-y-2">
+            {navItems.map((item) => (
+              <NavLink
+                key={item.to}
+                to={item.to}
+                className={({ isActive }) => 
+                  `flex items-center space-x-2 px-4 py-2 rounded-md ${
+                    isActive 
+                      ? 'bg-primary text-white' 
+                      : 'hover:bg-gray-100'
+                  }`
+                }
+                onClick={closeMobileMenu}
+              >
+                {item.icon}
+                <span>{item.label}</span>
+              </NavLink>
+            ))}
+            <div className="pt-2 border-t border-gray-200">
+              <div className="flex items-center space-x-2 px-4 py-2">
+                <div className="bg-primary/10 p-2 rounded-full">
+                  <User className="h-5 w-5 text-primary" />
+                </div>
+                <span className="font-medium">{currentUser?.name}</span>
+              </div>
+              <Button 
+                variant="outline" 
+                className="w-full mt-2"
+                onClick={handleLogout}
+              >
+                <LogOut className="h-4 w-4 mr-2" />
+                Logout
+              </Button>
+            </div>
+          </div>
+        </motion.div>
+      )}
+
+      {/* Main Content */}
+      <div className="flex flex-1">
+        {/* Sidebar - Desktop */}
+        <aside className="hidden md:block w-64 bg-white shadow-md">
+          <nav className="p-4 space-y-2">
+            {navItems.map((item) => (
+              <NavLink
+                key={item.to}
+                to={item.to}
+                className={({ isActive }) => 
+                  `flex items-center space-x-2 px-4 py-2 rounded-md transition-colors ${
+                    isActive 
+                      ? 'bg-primary text-white' 
+                      : 'hover:bg-gray-100'
+                  }`
+                }
+              >
+                {item.icon}
+                <span>{item.label}</span>
+              </NavLink>
+            ))}
+          </nav>
+        </aside>
+
+        <main className="flex-1 p-4 md:p-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <Outlet />
+          </motion.div>
+        </main>
+      </div>
+     
+    </div>
   );
 };
 
