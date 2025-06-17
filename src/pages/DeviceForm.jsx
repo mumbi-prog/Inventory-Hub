@@ -43,7 +43,6 @@ const DeviceForm = () => {
     if (isEditMode) {
       const device = getDevice(id);
       if (device) {
-        // Format dates for input fields
         const formatDateForInput = (dateString) => {
           if (!dateString) return '';
           const date = new Date(dateString);
@@ -127,13 +126,13 @@ const DeviceForm = () => {
             <CardContent className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <Label htmlFor="name">Device Name *</Label>
+                  <Label htmlFor="name">Device Type *</Label>
                   <Input
                     id="name"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    placeholder="e.g., MacBook Pro 16"
+                    placeholder="e.g., Laptop"
                     required
                   />
                 </div>
@@ -145,18 +144,18 @@ const DeviceForm = () => {
                     name="serialNumber"
                     value={formData.serialNumber}
                     onChange={handleChange}
-                    placeholder="e.g., ABC123XYZ"
+                    placeholder="e.g., ABCD1234Q"
                   />
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="model">Model</Label>
+                  <Label htmlFor="model">Make/Model</Label>
                   <Input
                     id="model"
                     name="model"
                     value={formData.model}
                     onChange={handleChange}
-                    placeholder="e.g., MBP16-2021"
+                    placeholder="e.g., Latitude 7280"
                   />
                 </div>
                 
@@ -167,7 +166,7 @@ const DeviceForm = () => {
                     name="manufacturer"
                     value={formData.manufacturer}
                     onChange={handleChange}
-                    placeholder="e.g., Apple"
+                    placeholder="e.g., Dell, hp"
                   />
                 </div>
                 
@@ -217,7 +216,7 @@ const DeviceForm = () => {
                       <SelectItem value="Active">Active</SelectItem>
                       <SelectItem value="Inactive">Inactive</SelectItem>
                       <SelectItem value="Maintenance">Maintenance</SelectItem>
-                      <SelectItem value="Retired">Retired</SelectItem>
+                      <SelectItem value="Decommissioned">Decommissioned</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -229,7 +228,6 @@ const DeviceForm = () => {
                     name="assignedTo"
                     value={formData.assignedTo}
                     onChange={handleChange}
-                    placeholder="e.g., John Doe"
                   />
                 </div>
                 
@@ -240,7 +238,7 @@ const DeviceForm = () => {
                     name="department"
                     value={formData.department}
                     onChange={handleChange}
-                    placeholder="e.g., Engineering"
+                    placeholder="e.g., Accounts, Ops"
                   />
                 </div>
                 
@@ -251,19 +249,19 @@ const DeviceForm = () => {
                     name="location"
                     value={formData.location}
                     onChange={handleChange}
-                    placeholder="e.g., Main Office, 3rd Floor"
+                    placeholder="e.g., Shell, Yard, Kisumu etc"
                   />
                 </div>
               </div>
               
               <div className="space-y-2">
-                <Label htmlFor="notes">Notes</Label>
+                <Label htmlFor="notes">Remarks</Label>
                 <Input
                   id="notes"
                   name="notes"
                   value={formData.notes}
                   onChange={handleChange}
-                  placeholder="Additional information about this device"
+                  placeholder="Additional info"
                 />
               </div>
             </CardContent>
