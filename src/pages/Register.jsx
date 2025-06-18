@@ -19,19 +19,56 @@ const Register = () => {
   const { register } = useAuth();
   const navigate = useNavigate();
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   setError('');
+    
+  //   if (password !== confirmPassword) {
+  //     setError('Passwords do not match');
+  //     return;
+  //   }
+    
+  //   setIsLoading(true);
+    
+  //   try {
+  //     const success = register(email, password, name);
+  //     if (success) {
+  //       navigate('/');
+  //     }
+  //   } catch (error) {
+  //     console.error('Registration error:', error);
+  //     setError('Failed to create an account');
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
-    
+  
+    const allowedEmails = [
+      'sylvia.mumbi@dakawou.com',
+      'washington@dakawou.com',
+      'itsupport@dakawou.com',
+      'it.attachee@dakawou.com',
+      'mohamed@dakawou.com'
+    ];
+  
+    if (!allowedEmails.includes(email.toLowerCase())) {
+      setError('Access Denied.');
+      return;
+    }
+  
     if (password !== confirmPassword) {
       setError('Passwords do not match');
       return;
     }
-    
+  
     setIsLoading(true);
-    
+  
     try {
-      const success = register(email, password, name);
+      const success = await register(email, password, name); 
       if (success) {
         navigate('/');
       }
@@ -42,7 +79,7 @@ const Register = () => {
       setIsLoading(false);
     }
   };
-
+  
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-500 to-indigo-600 p-4">
       <motion.div
