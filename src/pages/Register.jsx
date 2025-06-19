@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Laptop } from 'lucide-react';
+import { Boxes } from 'lucide-react';
 
 const Register = () => {
   const [name, setName] = useState('');
@@ -81,7 +81,7 @@ const Register = () => {
   };
   
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-500 to-indigo-600 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-300 to-indigo-500 p-4">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -92,7 +92,7 @@ const Register = () => {
           <CardHeader className="space-y-1 text-center">
             <div className="flex justify-center mb-2">
               <div className="p-2 bg-primary/10 rounded-full">
-                <Laptop className="h-10 w-10 text-primary" />
+                <Boxes className="h-10 w-10 text-primary" />
               </div>
             </div>
             <CardTitle className="text-2xl font-bold">Create an Account</CardTitle>
