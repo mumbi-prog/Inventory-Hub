@@ -40,7 +40,7 @@ const Dashboard = () => {
 
   const recentDevices = devices.sort((a, b) => {
     return new Date(b.createdAt) - new Date(a.createdAt);
-  }).slice(0, 5);
+  }).slice(0, 3);
 
   return (
     <div className="space-y-6">

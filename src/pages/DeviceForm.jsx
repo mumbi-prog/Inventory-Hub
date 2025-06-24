@@ -26,7 +26,6 @@ const DeviceForm = () => {
     name: '',
     serialNumber: '',
     model: '',
-    manufacturer: '',
     purchaseDate: '',
     lastCheckupDate: '',
     nextCheckupDate: '',
@@ -124,7 +123,7 @@ const DeviceForm = () => {
           </CardHeader>
           <form onSubmit={handleSubmit}>
             <CardContent className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="space-y-2">
                   <Label htmlFor="name">Device Type *</Label>
                   <Input
@@ -138,6 +137,17 @@ const DeviceForm = () => {
                 </div>
                 
                 <div className="space-y-2">
+                  <Label htmlFor="model">Manufacturer & Model</Label>
+                  <Input
+                    id="model"
+                    name="model"
+                    value={formData.model}
+                    onChange={handleChange}
+                    placeholder="e.g., Dell Latitude 7280"
+                  />
+                </div>
+
+                <div className="space-y-2">
                   <Label htmlFor="serialNumber">Serial Number</Label>
                   <Input
                     id="serialNumber"
@@ -147,29 +157,7 @@ const DeviceForm = () => {
                     placeholder="e.g., ABCD1234Q"
                   />
                 </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="model">Make/Model</Label>
-                  <Input
-                    id="model"
-                    name="model"
-                    value={formData.model}
-                    onChange={handleChange}
-                    placeholder="e.g., Latitude 7280"
-                  />
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="manufacturer">Manufacturer</Label>
-                  <Input
-                    id="manufacturer"
-                    name="manufacturer"
-                    value={formData.manufacturer}
-                    onChange={handleChange}
-                    placeholder="e.g., Dell, hp"
-                  />
-                </div>
-                
+
                 <div className="space-y-2">
                   <Label htmlFor="purchaseDate">Purchase Date</Label>
                   <Input
@@ -228,6 +216,7 @@ const DeviceForm = () => {
                     name="assignedTo"
                     value={formData.assignedTo}
                     onChange={handleChange}
+                    placeholder="e.g., Alex Khanyi"
                   />
                 </div>
                 
@@ -261,7 +250,7 @@ const DeviceForm = () => {
                   name="notes"
                   value={formData.notes}
                   onChange={handleChange}
-                  placeholder="Additional info"
+                  placeholder="Additional remarks about device, if given with other peripherals, damages etc"
                 />
               </div>
             </CardContent>
