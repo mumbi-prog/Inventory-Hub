@@ -192,7 +192,7 @@ const DeviceList = () => {
             <Laptop className="h-12 w-12 text-muted-foreground mb-4" />
             {searchTerm ? (
               <p className="text-muted-foreground text-center mb-4">
-                No devices match your search criteria. Try a different search term.
+                No device/user matches your search criteria.
               </p>
             ) : (
               <p className="text-muted-foreground text-center mb-4">

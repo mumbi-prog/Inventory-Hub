@@ -250,7 +250,7 @@ const DeviceForm = () => {
                   name="notes"
                   value={formData.notes}
                   onChange={handleChange}
-                  placeholder="Additional remarks about device, if given with other peripherals, damages etc"
+                  placeholder="Additional remarks about device, RAM & processor if it's a pc, if given with other peripherals, damages etc"
                 />
               </div>
             </CardContent>
