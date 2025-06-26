@@ -136,17 +136,10 @@ const DeviceList = () => {
                             S/N: {device.serialNumber || 'N/A'}
                           </div>
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-1 mt-2">
-                            <div className="text-sm">
-                              <span className="text-muted-foreground">Status: </span>
-                              <span>{device.status || 'Active'}</span>
-                            </div>
+                          
                             <div className="text-sm">
                               <span className="text-muted-foreground">Assigned to: </span>
                               <span>{device.assignedTo || 'Unassigned'}</span>
-                            </div>
-                            <div className="text-sm">
-                              <span className="text-muted-foreground">Department: </span>
-                              <span>{device.department || 'N/A'}</span>
                             </div>
                             <div className="text-sm">
                               <span className="text-muted-foreground">Last checkup: </span>
