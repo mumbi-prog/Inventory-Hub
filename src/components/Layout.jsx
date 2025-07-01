@@ -150,7 +150,7 @@ const Layout = () => {
       </main>
 
       {/* Footer */}
-      <footer className="row-start-3 col-span-2 fixed bottom-0 w-full bg-white shadow-md h-[48px] flex items-center justify-center text-sm text-muted-foreground">
+      <footer className="row-start-3 col-span-2 fixed bottom-0 w-full bg-slate-200 shadow-md h-[48px] flex items-center justify-center text-sm text-muted-foreground text-black">
         © {new Date().getFullYear()} DTL Inventory Hub | By Sylvia Mumbi
       </footer>
     </div>
