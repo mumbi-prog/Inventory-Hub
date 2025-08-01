@@ -13,12 +13,10 @@ import DeviceForm from '@/pages/DeviceForm';
 import Layout from '@/components/Layout';
 
 const ProtectedRoute = ({ children }) => {
-  const { currentUser } = useAuth();
-  
-  if (!currentUser) {
+  const { adminId } = useAuth();
+  if (!adminId) {
     return <Navigate to="/login" replace />;
   }
-  
   return children;
 };
 
