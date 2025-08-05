@@ -55,7 +55,7 @@ const UserForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setErrorMessage(''); // Clear any previous errors
+    setErrorMessage(''); 
 
     try {
       if (isEditMode) {
