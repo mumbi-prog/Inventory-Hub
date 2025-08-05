@@ -1,22 +1,27 @@
-
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { motion } from 'framer-motion';
 
-// Pages
 import Login from '@/pages/Login';
 import Register from '@/pages/Register';
 import Dashboard from '@/pages/Dashboard';
 import DeviceList from '@/pages/DeviceList';
 import DeviceForm from '@/pages/DeviceForm';
+import UserForm from '@/pages/UserForm';
 import Layout from '@/components/Layout';
 
 const ProtectedRoute = ({ children }) => {
-  const { adminId } = useAuth();
-  if (!adminId) {
+  const { admin, loading } = useAuth();
+
+  if (loading) {
+    return <div className="p-4 text-center">Loading...</div>;
+  }
+
+  if (!admin) {
     return <Navigate to="/login" replace />;
   }
+
   return children;
 };
 
@@ -31,14 +36,18 @@ const App = () => {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/" element={
-          <ProtectedRoute>
-            <Layout />
-          </ProtectedRoute>
-        }>
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute>
+              <Layout />
+            </ProtectedRoute>
+          }
+        >
           <Route index element={<Dashboard />} />
           <Route path="devices" element={<DeviceList />} />
           <Route path="devices/new" element={<DeviceForm />} />
+          <Route path="users/new" element={<UserForm />} />
           <Route path="devices/edit/:id" element={<DeviceForm />} />
         </Route>
         <Route path="*" element={<Navigate to="/" replace />} />
