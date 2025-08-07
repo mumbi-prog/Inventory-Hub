@@ -10,6 +10,22 @@ export const UserProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const { toast } = useToast();
 
+  const loadUsers = async () => {
+    setLoading(true);
+    try {
+      const response = await axios.get('/users');
+      setUsers(response.data);
+    } catch (error) {
+      toast({
+        title: 'Error loading users',
+        description: 'Could not fetch users from the server.',
+        variant: 'destructive',
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
 
 
   return (
