@@ -26,22 +26,34 @@ export const UserProvider = ({ children }) => {
     }
   };
 
-  const deleteUser = async (id) => {
+//   const deleteUser = async (id) => {
+//     try {
+//       await axios.delete(`/users/${id}`);
+//       setUsers(prev => prev.filter(user => user.id !== id));
+//       toast({
+//         title: 'User deleted',
+//         description: 'User removed successfully.',
+//       });
+//     } catch (error) {
+//       toast({
+//         title: 'Error deleting user',
+//         description: 'Could not delete user.',
+//         variant: 'destructive',
+//       });
+//     }
+//   };
+
+async function deleteUser(id) {
     try {
       await axios.delete(`/users/${id}`);
-      setUsers(prev => prev.filter(user => user.id !== id));
-      toast({
-        title: 'User deleted',
-        description: 'User removed successfully.',
-      });
-    } catch (error) {
-      toast({
-        title: 'Error deleting user',
-        description: 'Could not delete user.',
-        variant: 'destructive',
-      });
+      setUsers(prev => prev.filter(u => u.id !== id));
+      toast.success('User deleted.');
+    } catch (err) {
+      toast.error('Failed to delete user.');
+      throw err;
     }
-  };
+  }
+  
 
   useEffect(() => {
     loadUsers();

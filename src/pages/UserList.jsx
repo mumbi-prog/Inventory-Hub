@@ -1,8 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useUsers } from '@/contexts/UserContext';
 import { Link } from 'react-router-dom';
-import { Edit, Trash2, UserCircle, Search, X, PlusCircle,} from 'lucide-react';
-import { Button, Input, Card, CardContent, CardHeader, CardTitle, AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, } from '@/components/ui';
+import { Edit, Trash2, UserCircle, Search, X, PlusCircle } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import {
+  Card, CardContent, CardHeader, CardTitle
+} from '@/components/ui/card';
+import {
+  AlertDialog, AlertDialogAction, AlertDialogCancel,
+  AlertDialogContent, AlertDialogDescription,
+  AlertDialogFooter, AlertDialogHeader, AlertDialogTitle
+} from '@/components/ui/alert-dialog';
 
 const UserList = () => {
   const { users, loading, deleteUser } = useUsers();
@@ -22,10 +31,15 @@ const UserList = () => {
     setDeleteDialogOpen(true);
   };
 
-  const confirmDelete = () => {
+  const confirmDelete = async () => {
     if (selectedUser) {
-      deleteUser(selectedUser.id);
-      setDeleteDialogOpen(false);
+      try {
+        await deleteUser(selectedUser.id);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setDeleteDialogOpen(false);
+      }
     }
   };
 
@@ -38,7 +52,7 @@ const UserList = () => {
             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
             <Input
               value={search}
-              onChange={(e) => setSearch(e.target.value)}
+              onChange={e => setSearch(e.target.value)}
               placeholder="Search by name/email"
               className="pl-8"
             />
@@ -63,25 +77,20 @@ const UserList = () => {
       {loading ? (
         <div className="text-center">Loading users...</div>
       ) : filteredUsers.length > 0 ? (
-        filteredUsers.map((user) => (
+        filteredUsers.map(user => (
           <Card key={user.id}>
             <CardContent className="flex justify-between items-center p-4">
               <div className="flex items-center gap-4">
                 <UserCircle className="h-8 w-8 text-primary" />
                 <div>
-                  <div className="font-medium">
-                    {user.first_name} {user.last_name}
-                  </div>
-                  <div className="text-sm text-muted-foreground">
-                    {user.email}
-                  </div>
+                  <div className="font-medium">{user.first_name} {user.last_name}</div>
+                  <div className="text-sm text-muted-foreground">{user.email}</div>
                 </div>
               </div>
               <div className="flex items-center gap-2">
                 <Link to={`/users/edit/${user.id}`}>
                   <Button variant="outline" size="sm">
-                    <Edit className="h-4 w-4 mr-1" />
-                    Edit
+                    <Edit className="h-4 w-4 mr-1" />Edit
                   </Button>
                 </Link>
                 <Button
@@ -90,8 +99,7 @@ const UserList = () => {
                   className="text-destructive"
                   onClick={() => handleDelete(user)}
                 >
-                  <Trash2 className="h-4 w-4 mr-1" />
-                  Delete
+                  <Trash2 className="h-4 w-4 mr-1" />Delete
                 </Button>
               </div>
             </CardContent>

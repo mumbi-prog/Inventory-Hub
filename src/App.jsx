@@ -1,16 +1,22 @@
+// src/App.jsx
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { useAuth } from '@/contexts/AuthContext';
 import { motion } from 'framer-motion';
+import { useAuth } from '@/contexts/AuthContext';
 
+// Pages
 import Login from '@/pages/Login';
 import Register from '@/pages/Register';
 import Dashboard from '@/pages/Dashboard';
 import DeviceList from '@/pages/DeviceList';
 import DeviceForm from '@/pages/DeviceForm';
 import UserForm from '@/pages/UserForm';
-import Layout from '@/components/Layout';
 
+// Components
+import Layout from '@/components/Layout';
+import UserList from '../src/pages/UserList';
+
+// Protected route wrapper
 const ProtectedRoute = ({ children }) => {
   const { admin, loading } = useAuth();
 
@@ -34,8 +40,11 @@ const App = () => {
       className="min-h-screen"
     >
       <Routes>
+        {/* Public Routes */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+
+        {/* Protected Routes */}
         <Route
           path="/"
           element={
@@ -45,11 +54,19 @@ const App = () => {
           }
         >
           <Route index element={<Dashboard />} />
+
+          {/* Device Management */}
           <Route path="devices" element={<DeviceList />} />
           <Route path="devices/new" element={<DeviceForm />} />
-          <Route path="users/new" element={<UserForm />} />
           <Route path="devices/edit/:id" element={<DeviceForm />} />
+
+          {/* User Management */}
+          <Route path="users" element={<UserList />} />
+          <Route path="users/new" element={<UserForm />} />
+          <Route path="users/edit/:id" element={<UserForm />} />
         </Route>
+
+        {/* Fallback */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </motion.div>
