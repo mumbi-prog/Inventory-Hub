@@ -26,7 +26,26 @@ export const UserProvider = ({ children }) => {
     }
   };
 
+  const deleteUser = async (id) => {
+    try {
+      await axios.delete(`/users/${id}`);
+      setUsers(prev => prev.filter(user => user.id !== id));
+      toast({
+        title: 'User deleted',
+        description: 'User removed successfully.',
+      });
+    } catch (error) {
+      toast({
+        title: 'Error deleting user',
+        description: 'Could not delete user.',
+        variant: 'destructive',
+      });
+    }
+  };
 
+  useEffect(() => {
+    loadUsers();
+  }, []);
 
   return (
     <UserContext.Provider value={{ users, loading, deleteUser, refreshUsers: loadUsers }}>
