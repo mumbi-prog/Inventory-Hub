@@ -1,8 +1,8 @@
-// src/App.jsx
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useAuth } from '@/contexts/AuthContext';
+import { Toaster } from '@/components/ui/toaster'; // ✅ Import ShadCN Toaster
 
 // Pages
 import Login from '@/pages/Login';
@@ -14,9 +14,8 @@ import UserForm from '@/pages/UserForm';
 
 // Components
 import Layout from '@/components/Layout';
-import UserList from '../src/pages/UserList';
+import UserList from '@/pages/UserList';
 
-// Protected route wrapper
 const ProtectedRoute = ({ children }) => {
   const { admin, loading } = useAuth();
 
@@ -54,13 +53,9 @@ const App = () => {
           }
         >
           <Route index element={<Dashboard />} />
-
-          {/* Device Management */}
           <Route path="devices" element={<DeviceList />} />
           <Route path="devices/new" element={<DeviceForm />} />
           <Route path="devices/edit/:id" element={<DeviceForm />} />
-
-          {/* User Management */}
           <Route path="users" element={<UserList />} />
           <Route path="users/new" element={<UserForm />} />
           <Route path="users/edit/:id" element={<UserForm />} />
@@ -69,6 +64,8 @@ const App = () => {
         {/* Fallback */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
+
+      <Toaster />
     </motion.div>
   );
 };
