@@ -53,26 +53,50 @@ const UserForm = () => {
     setFormData(prev => ({ ...prev, department: value }));
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   setIsSubmitting(true);
+  //   setErrorMessage(''); 
+
+  //   try {
+  //     if (isEditMode) {
+  //       await axios.put(`/users/${id}`, formData);
+  //     } else {
+  //       await axios.post('/users', formData);
+  //     }
+  //     navigate('/users');
+  //   } catch (error) {
+  //     const msg = error.response?.data?.errors?.[0] || 'An error occurred while saving.';
+  //     setErrorMessage(msg);
+  //     console.error('Error saving user:', msg);
+  //   } finally {
+  //     setIsSubmitting(false);
+  //   }
+  // };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     setErrorMessage(''); 
-
+  
     try {
       if (isEditMode) {
         await axios.put(`/users/${id}`, formData);
+        toast.success('User updated successfully');
       } else {
         await axios.post('/users', formData);
+        toast.success('User created successfully');
       }
       navigate('/users');
     } catch (error) {
       const msg = error.response?.data?.errors?.[0] || 'An error occurred while saving.';
-      setErrorMessage(msg);
+      toast.error(msg);
       console.error('Error saving user:', msg);
     } finally {
       setIsSubmitting(false);
     }
   };
+  
 
   return (
     <div className="space-y-6">
