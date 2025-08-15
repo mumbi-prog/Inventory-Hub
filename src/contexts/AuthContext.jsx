@@ -103,8 +103,123 @@
 
 // src/contexts/AuthContext.jsx
 
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import axios from './../axios';
+
+
+// import React, { createContext, useContext, useState, useEffect } from 'react';
+// import axios from './../axios';
+
+// const AuthContext = createContext();
+
+// export const AuthProvider = ({ children }) => {
+//   const [admin, setAdmin] = useState(null);
+//   const [loading, setLoading] = useState(true);
+
+//   // Fetch current admin on mount
+//   useEffect(() => {
+//     const fetchAdmin = async () => {
+//       try {
+//         const response = await axios.get('/current_admin'); // You must have this backend route
+//         setAdmin(response.data.admin);
+//       } catch (error) {
+//         setAdmin(null);
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
+
+//     fetchAdmin();
+//   }, []);
+
+//   const login = async (email, password) => {
+//     try {
+//       const response = await axios.post(
+//         '/login',
+//         { email, password },
+//         { withCredentials: true }
+//       );
+//       setAdmin({ email }); // Optionally: response.data.admin
+//       return true;
+//     } catch (error) {
+//       console.error('Login failed:', error.response?.data || error.message);
+//       return false;
+//     }
+//   };
+
+//   const logout = async () => {
+//     try {
+//       await axios.delete('/logout', { withCredentials: true });
+//       setAdmin(null);
+//     } catch (error) {
+//       console.error('Logout failed:', error);
+//     }
+//   };
+
+//   return (
+//     <AuthContext.Provider value={{ admin, login, logout, loading }}>
+//       {children}
+//     </AuthContext.Provider>
+//   );
+// };
+
+// export const useAuth = () => useContext(AuthContext);
+
+
+
+// import React, { createContext, useContext, useEffect, useState } from 'react';
+// import api from '../axios'
+
+// const AuthContext = createContext();
+
+// export const AuthProvider = ({ children }) => {
+//   const [admin, setAdmin] = useState(null);
+//   const [loading, setLoading] = useState(true);
+
+//   const fetchCurrentAdmin = async () => {
+//     try {
+//       const res = await api.get('/current_admin');
+//       setAdmin(res.data.admin);
+//     } catch (err) {
+//       setAdmin(null);
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   useEffect(() => {
+//     fetchCurrentAdmin();
+//   }, []);
+
+//   const login = async (email, password) => {
+//     const res = await api.post('/login', { email, password });
+//     setAdmin(res.data.admin);
+//     return true;
+//   };
+
+//   const register = async (email, password, name) => {
+//     const res = await api.post('/signup', {
+//       admin: { name, email, password, password_confirmation: password },
+//     });
+//     setAdmin(res.data.admin);
+//     return true;
+//   };
+
+//   const logout = async () => {
+//     await api.delete('/logout');
+//     setAdmin(null);
+//   };
+
+//   return (
+//     <AuthContext.Provider value={{ admin, loading, login, register, logout }}>
+//       {children}
+//     </AuthContext.Provider>
+//   );
+// };
+
+// export const useAuth = () => useContext(AuthContext);
+
+
+import React, { createContext, useContext, useEffect, useState } from 'react';
+import api from '../axios';
 
 const AuthContext = createContext();
 
@@ -112,48 +227,54 @@ export const AuthProvider = ({ children }) => {
   const [admin, setAdmin] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Fetch current admin on mount
-  useEffect(() => {
-    const fetchAdmin = async () => {
-      try {
-        const response = await axios.get('/current_admin'); // You must have this backend route
-        setAdmin(response.data.admin);
-      } catch (error) {
-        setAdmin(null);
-      } finally {
-        setLoading(false);
+  const fetchCurrentAdmin = async () => {
+    try {
+      const res = await api.get('/current_admin');
+      setAdmin(res.data.admin);
+    } catch (err) {
+      if (err.response?.status !== 401) {
+        console.error('Error fetching current admin:', err);
       }
-    };
+      setAdmin(null);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    fetchAdmin();
+  useEffect(() => {
+    fetchCurrentAdmin();
   }, []);
 
   const login = async (email, password) => {
-    try {
-      const response = await axios.post(
-        '/login',
-        { email, password },
-        { withCredentials: true }
-      );
-      setAdmin({ email }); // Optionally: response.data.admin
-      return true;
-    } catch (error) {
-      console.error('Login failed:', error.response?.data || error.message);
-      return false;
-    }
+    const res = await api.post('/login', { email, password });
+    setAdmin(res.data.admin);
+    return true;
+  };
+
+  const register = async (email, password, name) => {
+    const res = await api.post('/signup', {
+      admin: { name, email, password, password_confirmation: password },
+    });
+    setAdmin(res.data.admin);
+    return true;
   };
 
   const logout = async () => {
-    try {
-      await axios.delete('/logout', { withCredentials: true });
-      setAdmin(null);
-    } catch (error) {
-      console.error('Logout failed:', error);
-    }
+    await api.delete('/logout');
+    setAdmin(null);
   };
 
   return (
-    <AuthContext.Provider value={{ admin, login, logout, loading }}>
+    <AuthContext.Provider
+      value={{
+        admin,
+        currentUser: admin,
+        loading,
+        login,
+        register,
+        logout,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );

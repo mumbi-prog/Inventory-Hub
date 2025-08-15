@@ -1,3 +1,5 @@
+// 
+
 import React, { useState } from 'react';
 import { Outlet, NavLink, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -36,6 +38,8 @@ const Layout = () => {
     { to: '/', icon: <Home className="h-5 w-5" />, label: 'Dashboard' },
     { to: '/devices', icon: <Laptop className="h-5 w-5" />, label: 'Devices' },
     { to: '/devices/new', icon: <PlusCircle className="h-5 w-5" />, label: 'Add Device' },
+    { to: '/users', icon: <PlusCircle className="h-5 w-5" />, label: 'Users' },
+    { to: '/users/new', icon: <PlusCircle className="h-5 w-5" />, label: 'Add User' },
   ];
 
   return (
@@ -150,7 +154,7 @@ const Layout = () => {
       </main>
 
       {/* Footer */}
-      <footer className="row-start-3 col-span-2 fixed bottom-0 w-full bg-slate-200 shadow-md h-[48px] flex items-center justify-center text-sm text-muted-foreground text-black">
+      <footer className="row-start-3 col-span-2 fixed bottom-0 w-full bg-white shadow-md h-[48px] flex items-center justify-center text-sm text-muted-foreground">
         © {new Date().getFullYear()} DTL Inventory Hub | By Sylvia Mumbi
       </footer>
     </div>
