@@ -67,6 +67,36 @@ const UserForm = () => {
     setFormData((prev) => ({ ...prev, department: value }));
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   setIsSubmitting(true);
+  //   try {
+  //     if (isEditMode) {
+  //       await api.put(`/users/${id}`, formData);
+  //       toast({
+  //         title: 'User updated successfully',
+  //       });
+  //     } else {
+  //       await api.post('/users', formData);
+  //       toast({
+  //         title: 'User created successfully',
+  //       });
+  //     }
+  //     navigate('/users');
+  //   } catch (error) {
+  //     const msg =
+  //       error.response?.data?.errors?.[0] || 'An error occurred while saving.';
+  //     toast({
+  //       title: 'Error saving user',
+  //       description: msg,
+  //       variant: 'destructive',
+  //     });
+  //     console.error('Error saving:', msg);
+  //   } finally {
+  //     setIsSubmitting(false);
+  //   }
+  // };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -82,6 +112,12 @@ const UserForm = () => {
           title: 'User created successfully',
         });
       }
+  
+      // 🔥 refresh user list immediately
+      if (typeof fetchUsers === "function") {
+        await fetchUsers();  
+      }
+  
       navigate('/users');
     } catch (error) {
       const msg =
@@ -96,7 +132,7 @@ const UserForm = () => {
       setIsSubmitting(false);
     }
   };
-
+  
   return (
     <div className="space-y-6">
       <div className="flex items-center space-x-2">

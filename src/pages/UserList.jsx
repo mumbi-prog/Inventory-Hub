@@ -141,6 +141,161 @@
 
 // export default UserList;
 
+// import React, { useState } from 'react';
+// import { useUsers } from '@/contexts/UserContext';
+// import { Link } from 'react-router-dom';
+// import { Trash2, Search, X, PlusCircle } from 'lucide-react';
+// import { Button } from '@/components/ui/button';
+// import { Input } from '@/components/ui/input';
+// import {
+//   Card, CardContent, CardHeader, CardTitle
+// } from '@/components/ui/card';
+// import {
+//   AlertDialog, AlertDialogAction, AlertDialogCancel,
+//   AlertDialogContent, AlertDialogDescription,
+//   AlertDialogFooter, AlertDialogHeader, AlertDialogTitle
+// } from '@/components/ui/alert-dialog';
+
+// const UserList = () => {
+//   const { users, loading, deleteUser } = useUsers();
+//   const [search, setSearch] = useState('');
+//   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
+//   const [selectedUser, setSelectedUser] = useState(null);
+
+//   const filteredUsers = users.filter(user =>
+//     [user.first_name, user.last_name, user.email]
+//       .join(' ')
+//       .toLowerCase()
+//       .includes(search.toLowerCase())
+//   );
+
+//   const handleDelete = (user) => {
+//     setSelectedUser(user);
+//     setDeleteDialogOpen(true);
+//   };
+
+//   const confirmDelete = async () => {
+//     if (selectedUser) {
+//       try {
+//         await deleteUser(selectedUser.id);
+//       } catch (err) {
+//         console.error(err);
+//       } finally {
+//         setDeleteDialogOpen(false);
+//       }
+//     }
+//   };
+
+//   return (
+//     <div className="space-y-6">
+//       {/* Header: Title + Search + Add Button */}
+//       <div className="flex justify-between items-center">
+//         <h1 className="text-3xl font-bold">Users</h1>
+//         <div className="flex gap-2">
+//           <div className="relative">
+//             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+//             <Input
+//               value={search}
+//               onChange={e => setSearch(e.target.value)}
+//               placeholder="Search by name/email"
+//               className="pl-8"
+//             />
+//             {search && (
+//               <button
+//                 onClick={() => setSearch('')}
+//                 className="absolute right-2.5 top-2.5"
+//               >
+//                 <X className="h-4 w-4" />
+//               </button>
+//             )}
+//           </div>
+//           <Link to="/users/new">
+//             <Button>
+//               <PlusCircle className="mr-2 h-4 w-4" />
+//               Add User
+//             </Button>
+//           </Link>
+//         </div>
+//       </div>
+
+//       {/* List of users */}
+//       {loading ? (
+//         <div className="text-center">Loading users...</div>
+//       ) : filteredUsers.length > 0 ? (
+//         <Card>
+//           <CardContent className="p-0">
+//             <table className="w-full text-left table-auto border-collapse">
+//               <thead className="bg-muted text-sm text-muted-foreground">
+//                 <tr>
+//                   <th className="px-4 py-2 font-medium">Name</th>
+//                   <th className="px-4 py-2 font-medium">Email</th>
+//                   <th className="px-4 py-2 font-medium text-right">Actions</th>
+//                 </tr>
+//               </thead>
+//               <tbody>
+//                 {filteredUsers.map(user => (
+//                   <tr key={user.id} className="border-t hover:bg-muted/20">
+//                     <td className="px-4 py-2">
+//                       <Link
+//                         to={`/users/edit/${user.id}`}
+//                         className="text-primary hover:underline"
+//                       >
+//                         {user.first_name} {user.last_name}
+//                       </Link>
+//                     </td>
+//                     <td className="px-4 py-2">{user.email}</td>
+//                     <td className="px-4 py-2 text-right">
+//                       <button
+//                         onClick={() => handleDelete(user)}
+//                         className="text-destructive hover:text-red-600"
+//                       >
+//                         <Trash2 className="h-4 w-4" />
+//                       </button>
+//                     </td>
+//                   </tr>
+//                 ))}
+//               </tbody>
+//             </table>
+//           </CardContent>
+//         </Card>
+//       ) : (
+//         <Card>
+//           <CardHeader>
+//             <CardTitle className="text-center">No users found</CardTitle>
+//           </CardHeader>
+//           <CardContent className="text-center text-muted-foreground">
+//             {search ? 'Try a different keyword.' : 'Start by adding users.'}
+//           </CardContent>
+//         </Card>
+//       )}
+
+//       {/* Delete confirmation dialog */}
+//       <AlertDialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
+//         <AlertDialogContent>
+//           <AlertDialogHeader>
+//             <AlertDialogTitle>Delete User?</AlertDialogTitle>
+//             <AlertDialogDescription>
+//               This action cannot be undone. Are you sure?
+//             </AlertDialogDescription>
+//           </AlertDialogHeader>
+//           <AlertDialogFooter>
+//             <AlertDialogCancel>Cancel</AlertDialogCancel>
+//             <AlertDialogAction
+//               onClick={confirmDelete}
+//               className="bg-destructive text-white"
+//             >
+//               Delete
+//             </AlertDialogAction>
+//           </AlertDialogFooter>
+//         </AlertDialogContent>
+//       </AlertDialog>
+//     </div>
+//   );
+// };
+
+// export default UserList;
+
+
 import React, { useState } from 'react';
 import { useUsers } from '@/contexts/UserContext';
 import { Link } from 'react-router-dom';
@@ -162,6 +317,9 @@ const UserList = () => {
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
 
+  // Debug log: check what users look like
+  console.log("Users from context:", users);
+
   const filteredUsers = users.filter(user =>
     [user.first_name, user.last_name, user.email]
       .join(' ')
@@ -176,6 +334,10 @@ const UserList = () => {
 
   const confirmDelete = async () => {
     if (selectedUser) {
+      // Debug log: check selected user and its id
+      console.log("Selected user before delete:", selectedUser);
+      console.log("Selected user id:", selectedUser?.id);
+
       try {
         await deleteUser(selectedUser.id);
       } catch (err) {
@@ -294,3 +456,4 @@ const UserList = () => {
 };
 
 export default UserList;
+
